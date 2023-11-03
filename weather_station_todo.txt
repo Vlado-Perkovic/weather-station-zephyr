@@ -1,0 +1,11 @@
+TODO:
+
+  - weather station with esp8266 microcontroller.
+  - humidity, temperature, ...
+  - display it on on lcd monitor.
+  - send the data via mqtt to a broker. 
+  - component architecture
+      - write all of the drivers
+
+  add other things along the way.
+
