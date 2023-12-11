@@ -1,6 +1,6 @@
 TODO:
 
-  - weather station with esp8266 microcontroller.
+  - weather station with esp32 microcontroller.
   - humidity, temperature, ...
   - display it on on lcd monitor.
   - send the data via mqtt to a broker. 
@@ -8,4 +8,13 @@ TODO:
       - write all of the drivers
 
   add other things along the way.
+  
+  ** this is a zephyr project for learning and implementing the basic and intermediate features **
+  -------> develop this project with that in mind <------------
+  
+  + make the scheme and connect everything on the board
+  - check if the components really work
+  	+ dht11 temperature and humidity sensor
+  	- photoresistor
+  	- lcd display
 
