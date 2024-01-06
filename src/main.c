@@ -83,7 +83,7 @@ int main(void) {
 
     if (rc != 0) {
       printf("Sensor fetch failed: %d\n", rc);
-      break;
+      /* break; */
     }
 
     struct sensor_value temperature;
