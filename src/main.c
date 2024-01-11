@@ -4,18 +4,23 @@
 #include "zws_utils.h"
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 int main(void)
 {
 
   const struct device *const dht11 = zws_setup_dht11();
+  zws_photoresistor_setup();
 
   printk("WiFi: \n");
   wifi_setup();
   wifi_start();
   printk("Ready...\n\n");
 
-  double temp, humid, light;
+  double temp = 0.0f, humid = 0.0f, light = 0.0f;
+
+  int err;
 
   while (true)
   {
@@ -23,9 +28,10 @@ int main(void)
     zws_dht11_fetch_data(dht11, &temp, &humid);
 
     light = zws_photoresistor_fetch();
+
     zws_utils_display(temp, humid, light);
 
-    k_sleep(K_SECONDS(2));
+    k_sleep(K_SECONDS(5));
   }
   return 0;
 }
