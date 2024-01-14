@@ -114,7 +114,6 @@ void wifi_start()
 {
     wifi_connect();
     k_sem_take(&wifi_connected, K_FOREVER);
-    printk("pimpek\n");
     wifi_status();
     k_sem_take(&ipv4_address_obtained, K_FOREVER);
 }
