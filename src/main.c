@@ -40,7 +40,7 @@ static char thread_stack[THREAD_STACK_SIZE];
 static void sensor_thread(void *arg1, void *arg2, void *arg3)
 {
   float temp, humid;
-  int light;
+  float light;
   char output[64];
 
   while (1)
