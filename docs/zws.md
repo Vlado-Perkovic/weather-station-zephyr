@@ -198,9 +198,9 @@ Ovdje dolazimo do jedne zanimljive mogućnosti operacijskog sustava Zephyr, a to
 
 #### ZEPHYR SHELL
 
-Zephyr RTOS ima lagani podsustav ljuske koji nudi interaktivno sučelje naredbenog retka (eng. *Command Line Interface*). Jedna od dostupnih ljuski je [Wi-Fi ljuska](https://docs.zephyrproject.org/latest/samples/net/wifi/README.html) koja programerima omogućuje izvršavanje zadataka kao što su omogućavanje Wi-Fi-ja, povezivanje s mrežama i provjera statusa veze pomoću naredbi kao što su `wifi scan`, `wifi connect <SSID> <password>` i `wifi status`. To olakšava konfiguraciju i otklanjanje pogrešaka u stvarnom vremenu bez ponovnog prevođenja cijelog programa. Stvarne naredbe i funkcionalnosti mogu se razlikovati ovisno o Zephyr verziji, konfiguraciji i hardveru koji se koristi.
+Zephyr RTOS ima lagani podsustav ljuske koji nudi interaktivno sučelje naredbenog retka (eng. *Command Line Interface*). Jedna od dostupnih ljuski je [Wi-Fi ljuska](https://docs.zephyrproject.org/latest/samples/net/wifi/README.html) koja programerima omogućuje izvršavanje zadataka kao što su omogućavanje Wi-Fija, povezivanje s mrežama i provjera statusa veze pomoću naredbi kao što su `wifi scan`, `wifi connect <SSID> <password>` i `wifi status`. To olakšava konfiguraciju i otklanjanje pogrešaka u stvarnom vremenu bez ponovnog prevođenja cijelog programa. Stvarne naredbe i funkcionalnosti mogu se razlikovati ovisno o Zephyr verziji, konfiguraciji i hardveru koji se koristi.
 
-Najjednostavnije korištenje ljuske bilo bi pokrenuti Zephyr-ov uzorak za Wi-Fi naredbom: 
+Najjednostavnije korištenje ljuske bilo bi pokrenuti Zephyrov uzorak za Wi-Fi naredbom: 
 ```bash
 west build -b <ime-plocice> samples/net/wifi
 ```
