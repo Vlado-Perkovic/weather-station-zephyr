@@ -1,4 +1,4 @@
-#Weather Station Zephyr
+# Weather Station Zephyr
 
 
 Projekt "Weather Station Zephyr" obuhvaća aplikaciju i prototip uređaja za mjerenje temperature, vlage i svjetlosti. Cilj projekta je upoznati se sa Zephyr RTOS-om.
@@ -45,7 +45,7 @@ Pregled direktorija
     └── zws_utils.h
 ```
 
-###Upravljanje dht11 senzorom
+### Upravljanje dht11 senzorom
 
 Zephyr RTOS ima bogatu podršku upravljačkih programa za razne senzore pa tako već postoji podrška za senzor dht11 (https://docs.zephyrproject.org/latest/build/dts/api/bindings/sensor/aosong,dht.html).
 Pri korištenju postojećih upravljačkih programa, moramo ih navesti kao `compatible = "<ime upravljačkog programa>"`.
@@ -110,7 +110,7 @@ void zws_dht11_fetch_data(const struct device *const device, double *temp,
 ```
 napomena: u ovom projektu pri korištenju Wi-Fija i protokola MQTT uz očitavanje senzora dolazi do pogreške.
 
-###Upravljanje senzorom svjetline
+### Upravljanje senzorom svjetline
 
 Senzor svjetline `GL5516` zapravo je otpornik koji mijenja svoj otpor promjenom izloženosti svjetlini. Što je veća svjetlina to je manji otpor. Kako bi se razina svjetla izmjerila, napravi se razdjelnik napona te tako preko ADC-a (Analog to Digital Converter) kvantificira se svjetlina preko ulaznog napona.
 
@@ -189,14 +189,14 @@ double zws_photoresistor_fetch()
 
 Vrijednost koju pročitamo zatim skaliramo da dobijemo postotak.
 
-###WI-FI
+### WI-FI
 
 Budući da razvojna pločica `esp32-devkitc-wrover` ima Wi-Fi modul, dobra je ideja integrirati mogućnosti te tehnologije u naš projekt.
 Zephyr pruža podršku za Wi-Fi preko svojih [upravljačkih programa](https://docs.zephyrproject.org/latest/doxygen/html/group__wifi__mgmt.html).
 
 Ovdje dolazimo do jedne zanimljive mogućnosti operacijskog sustava Zephyr, a to su interaktivne ljuske (eng. *interactive shells*).
 
-####ZEPHYR SHELL
+#### ZEPHYR SHELL
 
 Zephyr RTOS ima lagani podsustav ljuske koji nudi interaktivno sučelje naredbenog retka (eng. *Command Line Interface*). Jedna od dostupnih ljuski je [Wi-Fi ljuska](https://docs.zephyrproject.org/latest/samples/net/wifi/README.html) koja programerima omogućuje izvršavanje zadataka kao što su omogućavanje Wi-Fi-ja, povezivanje s mrežama i provjera statusa veze pomoću naredbi kao što su `wifi scan`, `wifi connect <SSID> <password>` i `wifi status`. To olakšava konfiguraciju i otklanjanje pogrešaka u stvarnom vremenu bez ponovnog prevođenja cijelog programa. Stvarne naredbe i funkcionalnosti mogu se razlikovati ovisno o Zephyr verziji, konfiguraciji i hardveru koji se koristi.
 
@@ -277,8 +277,8 @@ mqtt_topic_callback(struct mqtt_service *service, const char *topic, size_t payl
 }
 ```
 
-###Troubleshooting 16x2 LCD display
+### Troubleshooting 16x2 LCD display
 Pri izradi projekta planirano je prikazivati podatke senzora na LCD prikaznik. Koristeći interaktivnu ljusku pokušao sam prikazati barem jedno slovo na zaslon preko I2C protokola kako bi utvrdio da su adrese uređaja dobre. I2C skeniranje bi prepoznalo prikaznik na popularnoj `0x27` adresi no upisivanje testnih naredbi nije vraćalo ispravne rezultate. Npr., upis slova "A" bi ugasilo ekran, dok neke druge naredbe bi ga upalile. Potrebno je dodatno provjeriti prikaznik.
 
-###Troubleshooting MQTT vs dht11
+### Troubleshooting MQTT vs dht11
 Pojavio se problem gdje očitavanje senzora ne bi uspijevalo kada bi se inicijalizirao MQTT. Isti problem se pojavljivao i ranije kada bi interaktivna ljuska bila omogućena. Na Internetu ne pronalazim ništa relevantno.
