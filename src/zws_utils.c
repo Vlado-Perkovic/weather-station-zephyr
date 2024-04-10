@@ -22,6 +22,6 @@ const char *now_str(void) {
 }
 void zws_utils_display(double temp, double humid, double light) {
 
-  printk("[%s]: %.1f Cel ; %.1f %%RH ;  %.1f %%\n", now_str(), temp, humid,
+  printk("[%s]: %.2f Cel ; %.2f %%RH ;  %.2f %%\n", now_str(), temp, humid,
          light);
 }

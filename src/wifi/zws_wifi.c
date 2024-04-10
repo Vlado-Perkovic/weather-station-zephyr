@@ -5,10 +5,10 @@
 
 #include "zws_wifi.h"
 
-// #define SSID "A1_1993895310"
-// #define PSK "okUIBP1T"
-#define SSID "Vlado"
-#define PSK "mojdatumrodjenja"
+#define SSID "A1_1993895310"
+#define PSK "okUIBP1T"
+// #define SSID "Vlado"
+// #define PSK "mojdatumrodjenja"
 
 static K_SEM_DEFINE(wifi_connected, 0, 1);
 static K_SEM_DEFINE(ipv4_address_obtained, 0, 1);
