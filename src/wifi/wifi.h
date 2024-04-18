@@ -1,5 +1,5 @@
-#ifndef ZWS_WIFI_H
-#define ZWS_WIFI_H
+#ifndef WIFI_H
+#define WIFI_H
 
 #include <zephyr/net/net_event.h>
 #include <zephyr/net/net_if.h>
@@ -16,13 +16,13 @@ void handle_ipv4_result(struct net_if *iface);
 void wifi_mgmt_event_handler(struct net_mgmt_event_callback *cb,
                              uint32_t mgmt_event, struct net_if *iface);
 
-void wifi_setup();
+void wifi_setup(char* ssid, char* psk);
 
-void wifi_start();
+void wifi_start(char* ssid, char* psk);
 
 void wifi_connect(void);
 
 void wifi_status(void);
 
 void wifi_disconnect(void);
-#endif // !ZWS_WIFI_H
+#endif // !WIFI_H

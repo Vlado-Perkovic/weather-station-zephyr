@@ -6,6 +6,6 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/adc.h>
 
-void zws_photoresistor_setup();
-double zws_photoresistor_fetch();
+void photoresistor_setup();
+double photoresistor_fetch();
 #endif // !PHOTORESISTOR_H

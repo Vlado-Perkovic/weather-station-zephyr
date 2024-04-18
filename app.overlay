@@ -3,11 +3,7 @@
   zephyr,user {
       io-channels = <&adc0 0>;
   };
-  dht11 {
-    compatible = "aosong,dht";
-    status = "okay";
-    dio-gpios = <&gpio0 18 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-  };
+
 	
 };
 
@@ -27,4 +23,15 @@
 
 &wifi {
     status = "okay";
+};
+
+&gpio1 {
+  status = "okay";
+};
+
+&i2c0 {
+	sht3xd@44 {
+		compatible = "sensirion,sht3xd";
+		reg = <0x44>;
+	};
 };

@@ -3,18 +3,20 @@
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/util.h>
 
-#include "zws_wifi.h"
+#include "wifi.h"
 
-#define SSID "A1_1993895310"
-#define PSK "okUIBP1T"
-// #define SSID "Vlado"
-// #define PSK "mojdatumrodjenja"
+// #define SSID "A1_1993895310"
+// #define PSK "okUIBP1T"
+
 
 static K_SEM_DEFINE(wifi_connected, 0, 1);
 static K_SEM_DEFINE(ipv4_address_obtained, 0, 1);
 
 static struct net_mgmt_event_callback wifi_cb;
 static struct net_mgmt_event_callback ipv4_cb;
+
+static char* wifi_ssid = NULL;
+static char* wifi_psk = NULL;
 
 void handle_wifi_connect_result(struct net_mgmt_event_callback *cb)
 {
@@ -97,8 +99,10 @@ void wifi_mgmt_event_handler(struct net_mgmt_event_callback *cb,
     }
 }
 
-void wifi_setup()
+void wifi_setup(char* ssid, char* psk)
 {
+    wifi_ssid = ssid;
+    wifi_psk = psk;
     net_mgmt_init_event_callback(&wifi_cb, wifi_mgmt_event_handler,
                                  NET_EVENT_WIFI_CONNECT_RESULT |
                                      NET_EVENT_WIFI_DISCONNECT_RESULT);
@@ -110,8 +114,9 @@ void wifi_setup()
     net_mgmt_add_event_callback(&ipv4_cb);
 }
 
-void wifi_start()
+void wifi_start(char* ssid, char* psk)
 {
+    wifi_setup(ssid, psk);
     wifi_connect();
     k_sem_take(&wifi_connected, K_FOREVER);
     wifi_status();
@@ -124,10 +129,10 @@ void wifi_connect(void)
 
     struct wifi_connect_req_params wifi_params = {0};
 
-    wifi_params.ssid = SSID;
-    wifi_params.psk = PSK;
-    wifi_params.ssid_length = strlen(SSID);
-    wifi_params.psk_length = strlen(PSK);
+    wifi_params.ssid = wifi_ssid;
+    wifi_params.psk = wifi_psk;
+    wifi_params.ssid_length = strlen(wifi_ssid);
+    wifi_params.psk_length = strlen(wifi_psk);
     wifi_params.channel = WIFI_CHANNEL_ANY;
     wifi_params.security = WIFI_SECURITY_TYPE_PSK;
     wifi_params.band = WIFI_FREQ_BAND_2_4_GHZ;
