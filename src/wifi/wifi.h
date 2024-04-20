@@ -7,6 +7,9 @@
 #include <zephyr/net/wifi.h>
 #include <zephyr/net/wifi_mgmt.h>
 
+#define WIFI_SSID CONFIG_WIFI_SSID
+#define WIFI_PSK CONFIG_WIFI_PSK
+
 void handle_wifi_connect_result(struct net_mgmt_event_callback *cb);
 
 void handle_wifi_disconnect_result(struct net_mgmt_event_callback *cb);

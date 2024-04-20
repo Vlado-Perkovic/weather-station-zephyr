@@ -12,13 +12,6 @@ LOG_MODULE_REGISTER(ws, CONFIG_LOG_DEFAULT_LEVEL);
 #include <stdio.h>
 #include <stdlib.h>
 
-// MQTT client
-#define MQTT_CLIENTID "ws"
-
-// MQTT broker address information
-#define MQTT_BROKER_ADDR "172.20.10.5"
-// #define MQTT_BROKER_ADDR "192.168.100.35"
-#define MQTT_BROKER_PORT 1883
 
 // Thread specifications
 #define THREAD_PRIORITY 7
@@ -27,14 +20,14 @@ LOG_MODULE_REGISTER(ws, CONFIG_LOG_DEFAULT_LEVEL);
 K_THREAD_STACK_DEFINE(ws_stack, THREAD_STACK_SIZE);
 
 static struct k_thread ws_thread;
-static char *ssid = "Vlado";
-static char *psk = "12345678";
+
 static mqtt_service_t mqtt_service;
 static const struct device *sht3xd;
  
 
-
+/* ws_thread task function */
 static void sensor_thread();
+
 static int mqtt_topic_callback(struct mqtt_service *service, const char *topic,
                                size_t payload_len);
 
@@ -48,7 +41,7 @@ int main(void) {
   photoresistor_setup();
 
   /* START WIFI */
-  wifi_start(ssid, psk);
+  wifi_start(WIFI_SSID, WIFI_PSK);
 
   /* INIT AND START MQTT */
   mqtt_service_init(&mqtt_service, MQTT_CLIENTID, MQTT_BROKER_ADDR,

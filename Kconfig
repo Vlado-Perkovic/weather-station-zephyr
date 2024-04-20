@@ -1,0 +1,31 @@
+mainmenu "DRO application"
+
+#
+# Zephyr configuration options
+# Source the Kconfig.zephyr in the Zephyr root directory.
+# Check out the docs: https://docs.zephyrproject.org/latest/develop/application/index.html#application-cmakelists-txt
+#
+menu "Zephyr"
+source "Kconfig.zephyr"
+endmenu
+
+#
+# Set the module name for logging
+# Check out the docs: https://docs.zephyrproject.org/latest/services/logging/index.html#logging-in-a-module
+#
+
+config MQTT_BROKER_IP_ADDRESS
+    string "MQTT Broker IP Address"
+    default "172.20.10.5"
+
+config MQTT_BROKER_PORT
+    int "MQTT Broker Port"
+    default 1883
+
+config WIFI_SSID
+    string "WiFi SSID"
+    default "Vlado"
+
+config WIFI_PSK
+    string "WiFi PSK"
+    default "12345678"

@@ -1,6 +1,10 @@
 build
 .cache
 .vscode
+
+*.aux
+*.log
+*.toc
 # Prerequisites
 *.d
 
