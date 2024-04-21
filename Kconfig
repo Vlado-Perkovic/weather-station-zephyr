@@ -16,7 +16,7 @@ endmenu
 
 config MQTT_BROKER_IP_ADDRESS
     string "MQTT Broker IP Address"
-    default "172.20.10.5"
+    default "0.0.0.0"
 
 config MQTT_BROKER_PORT
     int "MQTT Broker Port"
